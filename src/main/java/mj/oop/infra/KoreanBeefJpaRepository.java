@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface JpaKoreanBeefRepository extends CrudRepository<KoreanBeef, Long> {
+public interface KoreanBeefJpaRepository extends CrudRepository<KoreanBeef, Long> {
     List<KoreanBeef> findAll();
 
     Optional<KoreanBeef> findById(Long id);
