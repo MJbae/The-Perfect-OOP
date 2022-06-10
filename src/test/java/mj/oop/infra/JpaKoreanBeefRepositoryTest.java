@@ -49,9 +49,7 @@ class JpaKoreanBeefRepositoryTest {
             @Test
             @DisplayName("비어 있는 List를 반환한다")
             void it_returns_empty_list() {
-                final List<KoreanBeef> actual = subject();
-
-                assertThat(actual).isEmpty();
+                assertThat(subject()).isEmpty();
             }
         }
 
@@ -66,9 +64,7 @@ class JpaKoreanBeefRepositoryTest {
             @Test
             @DisplayName("비어 있지 않은 List를 반환한다")
             void it_returns_not_empty_list() {
-                final List<KoreanBeef> actual = subject();
-
-                assertThat(actual).isNotEmpty();
+                assertThat(subject()).isNotEmpty();
             }
         }
     }
