@@ -1,6 +1,6 @@
 package mj.oop.controller;
 
-import mj.oop.application.interfaces.ProductShowService;
+import mj.oop.application.KoreanBeefShowService;
 import mj.oop.domain.entity.KoreanBeef;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ class KoreanBeefListControllerTest {
     @Autowired
     private MockMvc mockMvc;
     @MockBean
-    private ProductShowService<KoreanBeef> service;
+    private KoreanBeefShowService service;
 
     private final String PRODUCT_NAME = "세상에서 제일 맛있는 한우";
     private final BigDecimal PRICE = new BigDecimal(1000);
