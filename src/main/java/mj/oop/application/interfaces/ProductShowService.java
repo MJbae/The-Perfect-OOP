@@ -18,4 +18,13 @@ public interface ProductShowService<T extends Product> {
      * </p>
      */
     List<T> showAll();
+
+    /**
+     * 매개변수로 전달 받은 id에 해당하는 Product 타입 상속 객체를 반환한다
+     * <p>
+     * @param id Product 타입 상속 객체의 Id
+     * @return Product 타입 상속 객체
+     * </p>
+     */
+    T showBy(Long id);
 }
