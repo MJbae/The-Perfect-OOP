@@ -1,5 +1,6 @@
 package mj.oop.application;
 
+import mj.oop.application.interfaces.ProductCreateService;
 import mj.oop.domain.entity.KoreanBeef;
 import mj.oop.infra.KoreanBeefJpaRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +18,7 @@ import static org.mockito.Mockito.mock;
 @DisplayName("KoreanBeefCreateService")
 class KoreanBeefCreateServiceTest {
     private final KoreanBeefJpaRepository repository = mock(KoreanBeefJpaRepository.class);
-    private KoreanBeefCreateService service;
+    private ProductCreateService<KoreanBeef> service;
     private KoreanBeef productWithoutId;
     private KoreanBeef product;
 
