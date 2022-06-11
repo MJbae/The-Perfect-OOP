@@ -2,6 +2,7 @@ package mj.oop.controller;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import mj.oop.application.KoreanBeefShowService;
 import mj.oop.domain.entity.KoreanBeef;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -14,9 +15,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
+import java.util.NoSuchElementException;
 
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.mock;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -25,6 +26,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(KoreanBeefDetailController.class)
 @DisplayName("KoreanBeefDetailController")
 class KoreanBeefDetailControllerTest {
+    @MockBean
+    private KoreanBeefShowService service;
     @Autowired
     private MockMvc mockMvc;
     @Autowired
@@ -38,27 +41,53 @@ class KoreanBeefDetailControllerTest {
 
     private KoreanBeef product;
 
-    @BeforeEach
-    void setUp() {
-        product = KoreanBeef.builder()
-                .id(PRODUCT_ID)
-                .name(PRODUCT_NAME)
-                .price(PRICE)
-                .meatGrade(MEAT_GRADE)
-                .build();
-    }
-
     @Nested
     @DisplayName("detail 메소드는")
     class Describe_detail {
         @Nested
         @DisplayName("유효한 매개변수를 전달 받는다면")
         class Context_with_valid_param {
+            @BeforeEach
+            void setUp() {
+                product = KoreanBeef.builder()
+                        .id(PRODUCT_ID)
+                        .name(PRODUCT_NAME)
+                        .price(PRICE)
+                        .meatGrade(MEAT_GRADE)
+                        .build();
+
+                given(service.showBy(PRODUCT_ID)).willReturn(product);
+            }
+
             @Test
             @DisplayName("HTTP Status Code 200 OK 응답한다")
             void it_responds_with_200_ok() throws Exception {
                 mockMvc.perform(get("/beef/" + PRODUCT_ID))
                         .andExpect(status().isOk());
+            }
+        }
+
+        @Nested
+        @DisplayName("만약 존재하지 않는 ID를 매개변수로 전달 받는다면")
+        class Context_with_invalid_param {
+            @BeforeEach
+            void setUp() {
+                product = KoreanBeef.builder()
+                        .id(PRODUCT_ID_NOT_EXISTING)
+                        .name(PRODUCT_NAME)
+                        .price(PRICE)
+                        .meatGrade(MEAT_GRADE)
+                        .build();
+
+                given(service.showBy(PRODUCT_ID_NOT_EXISTING))
+                        .willThrow(new NoSuchElementException(PRODUCT_ID_NOT_EXISTING.toString()));
+            }
+
+            @Test
+            @DisplayName("HTTP Status Code 404 NOT FOUND 응답한다")
+            void it_responds_with_404() throws Exception {
+                mockMvc.perform(get("/beef/" + PRODUCT_ID_NOT_EXISTING))
+                        .andExpect(status().isNotFound());
             }
         }
     }
