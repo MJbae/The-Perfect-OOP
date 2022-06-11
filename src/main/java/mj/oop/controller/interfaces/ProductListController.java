@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface ProductListController<T extends ProductResponseData> {
     /**
-     * 목록 조회 요청에 따른 처리 결과를 List<ProductResponseData> 형태로 가공하여 반환한다
+     * 목록 조회 요청에 따른 처리 결과를 List<ProductResponseData> 타입으로 가공하여 반환한다
      * <p>
-     * @return  목록 조회 요청에 대한 처리결과를 JSON 객체로 역직렬화하기 위한 객체
+     * @return 목록 조회 요청에 대한 처리결과를 JSON 객체로 역직렬화하기 위한 객체
      * </p>
      */
     List<T> list();
