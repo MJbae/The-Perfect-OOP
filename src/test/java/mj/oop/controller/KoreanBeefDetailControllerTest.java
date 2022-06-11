@@ -30,8 +30,6 @@ class KoreanBeefDetailControllerTest {
     private KoreanBeefShowService service;
     @Autowired
     private MockMvc mockMvc;
-    @Autowired
-    private ObjectMapper objectMapper;
 
     private final String PRODUCT_NAME = "세상에서 제일 맛있는 한우";
     private final BigDecimal PRICE = new BigDecimal(1000);
