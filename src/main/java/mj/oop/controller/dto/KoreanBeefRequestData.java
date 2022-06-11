@@ -6,12 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import mj.oop.domain.entity.KoreanBeef;
 
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class KoreanBeefRequestData extends ProductRequestData {
+    @NotBlank
     private String meatGrade;
 
     @Builder

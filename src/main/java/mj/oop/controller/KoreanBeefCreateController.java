@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 
 @RestController
@@ -16,7 +17,7 @@ public class KoreanBeefCreateController implements ProductCreateController<Korea
     @PostMapping("/beef")
     @ResponseStatus(HttpStatus.CREATED)
     @Override
-    public KoreanBeefResponseData create(@RequestBody KoreanBeefRequestData requestDto) {
+    public KoreanBeefResponseData create(@RequestBody @Valid KoreanBeefRequestData requestDto) {
         return new KoreanBeefResponseData(1L, "맛있는 한우", new BigDecimal(1000), "1+");
     }
 }
