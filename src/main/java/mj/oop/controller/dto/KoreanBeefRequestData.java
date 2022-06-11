@@ -21,4 +21,11 @@ public class KoreanBeefRequestData extends ProductRequestData {
         super(name, price);
         this.meatGrade = meatGrade;
     }
+
+    public KoreanBeef toEntity() {
+        return KoreanBeef.builder()
+                .name(getName())
+                .price(getPrice())
+                .meatGrade(getMeatGrade()).build();
+    }
 }
