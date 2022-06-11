@@ -6,6 +6,7 @@ import mj.oop.infra.KoreanBeefJpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class KoreanBeefShowService implements ProductShowService<KoreanBeef> {
@@ -18,5 +19,11 @@ public class KoreanBeefShowService implements ProductShowService<KoreanBeef> {
     @Override
     public List<KoreanBeef> showAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public KoreanBeef showBy(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException(id.toString()));
     }
 }
