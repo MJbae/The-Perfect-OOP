@@ -50,7 +50,7 @@ class KoreanBeefCreateControllerTest {
 
         @Nested
         @DisplayName("유효한 매개변수를 전달 받는다면")
-        class Context_with_valid_param {
+        class Context_with_all_valid_params {
             @Test
             @DisplayName("HTTP Status Code 201 CREATED 응답한다")
             void it_responds_with_201() throws Exception {
@@ -58,6 +58,71 @@ class KoreanBeefCreateControllerTest {
                                 .content(jsonFrom(product))
                                 .contentType(MediaType.APPLICATION_JSON))
                         .andExpect(status().isCreated());
+            }
+        }
+
+        @Nested
+        @DisplayName("빈값의 이름을 받는다면")
+        class Context_with_empty_param {
+            @BeforeEach
+            void setUp() {
+                product = KoreanBeef.builder()
+                        .id(PRODUCT_ID)
+                        .name("")
+                        .price(PRICE)
+                        .meatGrade(MEAT_GRADE)
+                        .build();
+            }
+            @Test
+            @DisplayName("HTTP Status Code 400 BAD REQUEST 응답한다")
+            void it_responds_with_400() throws Exception {
+                mockMvc.perform(post("/beef")
+                                .content(jsonFrom(product))
+                                .contentType(MediaType.APPLICATION_JSON))
+                        .andExpect(status().isBadRequest());
+            }
+        }
+
+        @Nested
+        @DisplayName("공백의 이름을 받는다면")
+        class Context_with_space_param {
+            @BeforeEach
+            void setUp() {
+                product = KoreanBeef.builder()
+                        .id(PRODUCT_ID)
+                        .name(" ")
+                        .price(PRICE)
+                        .meatGrade(MEAT_GRADE)
+                        .build();
+            }
+            @Test
+            @DisplayName("HTTP Status Code 400 BAD REQUEST 응답한다")
+            void it_responds_with_400() throws Exception {
+                mockMvc.perform(post("/beef")
+                                .content(jsonFrom(product))
+                                .contentType(MediaType.APPLICATION_JSON))
+                        .andExpect(status().isBadRequest());
+            }
+        }
+
+        @Nested
+        @DisplayName("가격을 NULL로 받는다면")
+        class Context_with_null_price {
+            @BeforeEach
+            void setUp() {
+                product = KoreanBeef.builder()
+                        .id(PRODUCT_ID)
+                        .name(PRODUCT_NAME)
+                        .meatGrade(MEAT_GRADE)
+                        .build();
+            }
+            @Test
+            @DisplayName("HTTP Status Code 400 BAD REQUEST 응답한다")
+            void it_responds_with_400() throws Exception {
+                mockMvc.perform(post("/beef")
+                                .content(jsonFrom(product))
+                                .contentType(MediaType.APPLICATION_JSON))
+                        .andExpect(status().isBadRequest());
             }
         }
     }
