@@ -14,4 +14,6 @@ public interface KoreanBeefJpaRepository extends CrudRepository<KoreanBeef, Long
     KoreanBeef save(KoreanBeef product);
 
     void delete(KoreanBeef product);
+
+    boolean existsById(Long id);
 }
