@@ -14,7 +14,7 @@ import mj.oop.controller.dto.ProductResponseData;
  */
 public interface ProductCreateController<T extends ProductResponseData, T2 extends ProductRequestData> {
     /**
-     * 상세 조회 요청에 따른 처리 결과를 ProductResponseData 타입으로 가공하여 반환한다
+     * 생성 요청에 따른 처리 결과를 ProductResponseData 타입으로 가공하여 반환한다
      * <p>
      * @param requestDto Request Body로 전달된 JSON 객체를 직렬화하여 받기 위한 객체
      * @return 생성 요청에 대한 처리결과를 JSON 객체로 역직렬화하기 위한 객체
