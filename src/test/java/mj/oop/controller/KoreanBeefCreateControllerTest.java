@@ -2,6 +2,7 @@ package mj.oop.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import mj.oop.application.KoreanBeefCreateService;
 import mj.oop.controller.dto.KoreanBeefRequestData;
 import mj.oop.domain.entity.KoreanBeef;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,11 +12,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -23,6 +27,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(KoreanBeefCreateController.class)
 @DisplayName("KoreanBeefCreateController")
 class KoreanBeefCreateControllerTest {
+    @MockBean
+    private KoreanBeefCreateService service;
     @Autowired
     private MockMvc mockMvc;
     @Autowired
@@ -46,6 +52,8 @@ class KoreanBeefCreateControllerTest {
                     .price(PRICE)
                     .meatGrade(MEAT_GRADE)
                     .build();
+
+            given(service.create(any(KoreanBeef.class))).willReturn(product);
         }
 
         @Nested
@@ -72,6 +80,8 @@ class KoreanBeefCreateControllerTest {
                         .price(PRICE)
                         .meatGrade(MEAT_GRADE)
                         .build();
+
+                given(service.create(any(KoreanBeef.class))).willReturn(product);
             }
             @Test
             @DisplayName("HTTP Status Code 400 BAD REQUEST 응답한다")
@@ -94,6 +104,8 @@ class KoreanBeefCreateControllerTest {
                         .price(PRICE)
                         .meatGrade(MEAT_GRADE)
                         .build();
+
+                given(service.create(any(KoreanBeef.class))).willReturn(product);
             }
             @Test
             @DisplayName("HTTP Status Code 400 BAD REQUEST 응답한다")
@@ -115,6 +127,8 @@ class KoreanBeefCreateControllerTest {
                         .name(PRODUCT_NAME)
                         .meatGrade(MEAT_GRADE)
                         .build();
+
+                given(service.create(any(KoreanBeef.class))).willReturn(product);
             }
             @Test
             @DisplayName("HTTP Status Code 400 BAD REQUEST 응답한다")
