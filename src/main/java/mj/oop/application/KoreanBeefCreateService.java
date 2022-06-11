@@ -16,6 +16,6 @@ public class KoreanBeefCreateService implements ProductCreateService<KoreanBeef>
     }
     @Override
     public KoreanBeef create(KoreanBeef product) {
-        return new KoreanBeef(1L, "세상에서 제일 맛있는 한우", new BigDecimal(1000), "1+");
+        return repository.save(product);
     }
 }
