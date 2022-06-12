@@ -4,6 +4,8 @@ import mj.oop.application.interfaces.ProductDeleteService;
 import mj.oop.infra.KoreanBeefJpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
+
 
 @Service
 public class KoreanBeefDeleteService implements ProductDeleteService {
@@ -15,5 +17,10 @@ public class KoreanBeefDeleteService implements ProductDeleteService {
 
     @Override
     public void deleteBy(Long id) {
+        if (!repository.existsById(id)) {
+            throw new NoSuchElementException(id.toString());
+        }
+
+        repository.deleteById(id);
     }
 }
