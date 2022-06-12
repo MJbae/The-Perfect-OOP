@@ -8,14 +8,14 @@
 </table>
 
 ## 1. Output
-- [Deployed Service]()
-- [API Docs]()
-- [Objects Relation Diagram]()
+- [(DOING) Deployed Service]()
+- [(DOING) API Docs]()
+- [(DOING) Objects Relation Diagram]()
 
 ## 2. Background
 - "Elegant Objects"를 읽고, 객체지향 패러다임에 빠졌다. 
 - 관련 서적 세 권을 더 읽고난 후, 완벽한 객체지향 세상을 만들고 싶은 욕구가 생겼다.
-- (솔직히) 꽤 괜찮은 포폴이 될 것 같다.
+- 꽤 괜찮은 포폴이 될 것 같다.
 
 ## 3. Development Principles
 - SOLID: 객체 및 객체 간 관계는 OOP 주요 원칙 5가지를 모두 만족하는 방향으로 구현한다.
