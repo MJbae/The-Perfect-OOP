@@ -32,3 +32,7 @@
 ### TEST
 - better specs / https://www.betterspecs.org/
 - 기계인간 John Grip / https://johngrib.github.io/wiki/junit5-nested/#describe---context---it-%ED%8C%A8%ED%84%B4
+### TDD
+- 코드숨 / https://www.codesoom.com/courses/spring
+- Kent Beck / Test-Driven Development
+- 이규원 / 현실 세상의 TDD
