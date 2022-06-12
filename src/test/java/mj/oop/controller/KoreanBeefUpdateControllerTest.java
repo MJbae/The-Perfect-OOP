@@ -2,6 +2,7 @@ package mj.oop.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import mj.oop.application.KoreanBeefUpdateService;
 import mj.oop.controller.dto.KoreanBeefRequestData;
 import mj.oop.domain.entity.KoreanBeef;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,11 +12,15 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -23,6 +28,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(KoreanBeefUpdateController.class)
 @DisplayName("KoreanBeefUpdateController")
 class KoreanBeefUpdateControllerTest {
+    @MockBean
+    private KoreanBeefUpdateService service;
     @Autowired
     private MockMvc mockMvc;
     @Autowired
@@ -43,10 +50,13 @@ class KoreanBeefUpdateControllerTest {
             @BeforeEach
             void setUp() {
                 product = KoreanBeef.builder()
+                        .id(PRODUCT_ID)
                         .name(PRODUCT_NAME)
                         .price(PRICE)
                         .meatGrade(MEAT_GRADE)
                         .build();
+
+                given(service.update(eq(PRODUCT_ID), any(KoreanBeef.class))).willReturn(product);
             }
 
             @Test
