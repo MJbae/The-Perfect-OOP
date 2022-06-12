@@ -24,7 +24,11 @@
 - Trade Off: 절차지향적 레거시를 불가피하게 적용 시, 이슈를 생성하여 그 이유를 명시한다.
 
 ## Reference
+### OOP
 - 조영호 / 오브젝트
 - 조영호 / 객체지향의 사실과 오해
 - Yegor Bugayenko / Elegant Objects
 - Steve Freeman, Nat Pryce / Growing Object Oriented Software, Guided by Tests
+### TEST
+- better specs / https://www.betterspecs.org/
+- 기계인간 John Grip / https://johngrib.github.io/wiki/junit5-nested/#describe---context---it-%ED%8C%A8%ED%84%B4
