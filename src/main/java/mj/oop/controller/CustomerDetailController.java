@@ -1,33 +1,28 @@
 package mj.oop.controller;
 
-import mj.oop.application.interfaces.UserShowService;
-import mj.oop.controller.dto.UserResponseData;
+import mj.oop.application.CustomerShowService;
+import mj.oop.controller.dto.CustomerResponseData;
 import mj.oop.controller.interfaces.UserDetailController;
-import mj.oop.controller.interfaces.UserListController;
-import mj.oop.domain.entity.User;
-import org.springframework.http.HttpStatus;
+import mj.oop.domain.entity.Customer;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 @RestController
 @RequestMapping("/users")
-public class CustomerDetailController implements UserDetailController {
-    private final UserShowService service;
+public class CustomerDetailController implements UserDetailController<CustomerResponseData> {
+    private final CustomerShowService service;
 
-    public CustomerDetailController(UserShowService service) {
+    public CustomerDetailController(CustomerShowService service) {
         this.service = service;
     }
 
 
     @GetMapping("{id}")
     @Override
-    public UserResponseData detail(@PathVariable Long id) {
-        User user = service.showById(id);
-        return UserResponseData.from(user);
+    public CustomerResponseData detail(@PathVariable Long id) {
+        Customer user = service.showById(id);
+        return CustomerResponseData.from(user);
     }
 
 }
