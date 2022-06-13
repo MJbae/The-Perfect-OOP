@@ -8,9 +8,9 @@
 </table>
 
 ## 1. Output
-- [(DOING) Deployed Service]()
-- [(DOING) API Docs]()
-- [(DOING) Objects Relation Diagram]()
+- [(IN PROGRESS) UML](https://github.com/MJbae/The-Perfect-OOP/wiki/Product-UML)
+- [(IN PROGRESS) API Docs]()
+- [(IN PROGRESS) Deployed Service]()
 
 ## 2. Background
 - "Elegant Objects"를 읽고, 객체지향 패러다임에 빠졌다. 
