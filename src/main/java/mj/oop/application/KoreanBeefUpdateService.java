@@ -2,14 +2,14 @@ package mj.oop.application;
 
 import mj.oop.application.interfaces.ProductUpdateService;
 import mj.oop.domain.entity.KoreanBeef;
-import mj.oop.infra.KoreanBeefJpaRepository;
+import mj.oop.infra.KoreanBeefRepository;
 
 import java.util.NoSuchElementException;
 
 public class KoreanBeefUpdateService implements ProductUpdateService<KoreanBeef> {
-    private final KoreanBeefJpaRepository repository;
+    private final KoreanBeefRepository repository;
 
-    public KoreanBeefUpdateService(KoreanBeefJpaRepository repository) {
+    public KoreanBeefUpdateService(KoreanBeefRepository repository) {
         this.repository = repository;
     }
 

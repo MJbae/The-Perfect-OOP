@@ -2,7 +2,7 @@ package mj.oop.application;
 
 import mj.oop.application.interfaces.ProductUpdateService;
 import mj.oop.domain.entity.KoreanBeef;
-import mj.oop.infra.KoreanBeefJpaRepository;
+import mj.oop.infra.KoreanBeefRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.mock;
 
 @DisplayName("KoreanBeefUpdateService")
 class KoreanBeefUpdateServiceTest {
-    private final KoreanBeefJpaRepository repository = mock(KoreanBeefJpaRepository.class);
+    private final KoreanBeefRepository repository = mock(KoreanBeefRepository.class);
     private ProductUpdateService<KoreanBeef> service;
     private KoreanBeef product;
 

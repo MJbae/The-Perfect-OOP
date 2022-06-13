@@ -2,7 +2,7 @@ package mj.oop.application;
 
 import mj.oop.application.interfaces.ProductShowService;
 import mj.oop.domain.entity.KoreanBeef;
-import mj.oop.infra.KoreanBeefJpaRepository;
+import mj.oop.infra.KoreanBeefRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +10,9 @@ import java.util.NoSuchElementException;
 
 @Service
 public class KoreanBeefShowService implements ProductShowService<KoreanBeef> {
-    private final KoreanBeefJpaRepository repository;
+    private final KoreanBeefRepository repository;
 
-    public KoreanBeefShowService(KoreanBeefJpaRepository repository) {
+    public KoreanBeefShowService(KoreanBeefRepository repository) {
         this.repository = repository;
     }
 
