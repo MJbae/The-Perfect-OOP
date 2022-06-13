@@ -1,6 +1,5 @@
 package mj.oop.domain.entity;
 
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -14,7 +13,6 @@ import java.math.BigDecimal;
  * </p>
  */
 @Entity
-@Getter
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn
@@ -22,7 +20,7 @@ public abstract class Product {
     @Id
     @GeneratedValue
     private Long id;
-    
+
     private String name;
 
     private BigDecimal price;
@@ -38,4 +36,15 @@ public abstract class Product {
         this.price = price;
     }
 
+    public Long id() {
+        return id;
+    }
+
+    public String name() {
+        return name;
+    }
+
+    public BigDecimal price() {
+        return price;
+    }
 }
