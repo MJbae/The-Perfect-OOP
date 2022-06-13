@@ -2,14 +2,16 @@ package mj.oop.application;
 
 import mj.oop.application.interfaces.ProductUpdateService;
 import mj.oop.domain.entity.KoreanBeef;
-import mj.oop.infra.KoreanBeefJpaRepository;
+import mj.oop.infra.KoreanBeefRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
 
+@Service
 public class KoreanBeefUpdateService implements ProductUpdateService<KoreanBeef> {
-    private final KoreanBeefJpaRepository repository;
+    private final KoreanBeefRepository repository;
 
-    public KoreanBeefUpdateService(KoreanBeefJpaRepository repository) {
+    public KoreanBeefUpdateService(KoreanBeefRepository repository) {
         this.repository = repository;
     }
 
@@ -20,10 +22,10 @@ public class KoreanBeefUpdateService implements ProductUpdateService<KoreanBeef>
         }
 
         KoreanBeef productUpdating = KoreanBeef.builder()
-                .id(product.getId())
-                .name(product.getName())
-                .price(product.getPrice())
-                .meatGrade(product.getMeatGrade()).build();
+                .id(product.id())
+                .name(product.name())
+                .price(product.price())
+                .meatGrade(product.meatGrade()).build();
 
         return repository.save(productUpdating);
     }

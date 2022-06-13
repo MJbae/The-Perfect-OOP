@@ -2,7 +2,7 @@ package mj.oop.application;
 
 import mj.oop.application.interfaces.ProductCreateService;
 import mj.oop.domain.entity.KoreanBeef;
-import mj.oop.infra.KoreanBeefJpaRepository;
+import mj.oop.infra.KoreanBeefRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.mock;
 
 @DisplayName("KoreanBeefCreateService")
 class KoreanBeefCreateServiceTest {
-    private final KoreanBeefJpaRepository repository = mock(KoreanBeefJpaRepository.class);
+    private final KoreanBeefRepository repository = mock(KoreanBeefRepository.class);
     private ProductCreateService<KoreanBeef> service;
     private KoreanBeef productWithoutId;
     private KoreanBeef product;
@@ -60,9 +60,9 @@ class KoreanBeefCreateServiceTest {
         @Test
         @DisplayName("매개변수로 전달한 값이 반영된 한우 상품 엔티티를 반환한다")
         void it_returns_product_reflecting_params() {
-            assertThat(subject().getName()).isEqualTo(PRODUCT_NAME);
-            assertThat(subject().getPrice()).isEqualTo(PRICE);
-            assertThat(subject().getMeatGrade()).isEqualTo(MEAT_GRADE);
+            assertThat(subject().name()).isEqualTo(PRODUCT_NAME);
+            assertThat(subject().price()).isEqualTo(PRICE);
+            assertThat(subject().meatGrade()).isEqualTo(MEAT_GRADE);
         }
     }
 }

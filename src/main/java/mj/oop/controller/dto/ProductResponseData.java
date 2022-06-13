@@ -1,18 +1,17 @@
 package mj.oop.controller.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
 import java.math.BigDecimal;
 
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public abstract class ProductResponseData {
-    private Long id;
+    private final Long id;
 
-    private String name;
+    private final String name;
 
-    private BigDecimal price;
+    private final BigDecimal price;
+
+    public ProductResponseData(Long id, String name, BigDecimal price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
 }

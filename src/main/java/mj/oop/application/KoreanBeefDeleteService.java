@@ -1,7 +1,7 @@
 package mj.oop.application;
 
 import mj.oop.application.interfaces.ProductDeleteService;
-import mj.oop.infra.KoreanBeefJpaRepository;
+import mj.oop.infra.KoreanBeefRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
@@ -9,9 +9,9 @@ import java.util.NoSuchElementException;
 
 @Service
 public class KoreanBeefDeleteService implements ProductDeleteService {
-    private final KoreanBeefJpaRepository repository;
+    private final KoreanBeefRepository repository;
 
-    public KoreanBeefDeleteService(KoreanBeefJpaRepository repository) {
+    public KoreanBeefDeleteService(KoreanBeefRepository repository) {
         this.repository = repository;
     }
 
