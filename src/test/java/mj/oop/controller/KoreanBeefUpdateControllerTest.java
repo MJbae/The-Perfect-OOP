@@ -72,9 +72,9 @@ class KoreanBeefUpdateControllerTest {
 
     private String jsonFrom(KoreanBeef product) throws JsonProcessingException {
         KoreanBeefRequestData requestData = KoreanBeefRequestData.builder()
-                .name(product.getName())
-                .price(product.getPrice())
-                .meatGrade(product.getMeatGrade())
+                .name(product.name())
+                .price(product.price())
+                .meatGrade(product.meatGrade())
                 .build();
 
         return objectMapper.writeValueAsString(requestData);

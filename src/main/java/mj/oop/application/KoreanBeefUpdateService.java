@@ -22,10 +22,10 @@ public class KoreanBeefUpdateService implements ProductUpdateService<KoreanBeef>
         }
 
         KoreanBeef productUpdating = KoreanBeef.builder()
-                .id(product.getId())
-                .name(product.getName())
-                .price(product.getPrice())
-                .meatGrade(product.getMeatGrade()).build();
+                .id(product.id())
+                .name(product.name())
+                .price(product.price())
+                .meatGrade(product.meatGrade()).build();
 
         return repository.save(productUpdating);
     }

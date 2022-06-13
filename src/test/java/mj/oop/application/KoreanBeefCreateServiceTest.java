@@ -60,9 +60,9 @@ class KoreanBeefCreateServiceTest {
         @Test
         @DisplayName("매개변수로 전달한 값이 반영된 한우 상품 엔티티를 반환한다")
         void it_returns_product_reflecting_params() {
-            assertThat(subject().getName()).isEqualTo(PRODUCT_NAME);
-            assertThat(subject().getPrice()).isEqualTo(PRICE);
-            assertThat(subject().getMeatGrade()).isEqualTo(MEAT_GRADE);
+            assertThat(subject().name()).isEqualTo(PRODUCT_NAME);
+            assertThat(subject().price()).isEqualTo(PRICE);
+            assertThat(subject().meatGrade()).isEqualTo(MEAT_GRADE);
         }
     }
 }

@@ -63,9 +63,9 @@ class KoreanBeefUpdateServiceTest {
                     KoreanBeef source = invocation.getArgument(0);
                     return KoreanBeef.builder()
                             .id(PRODUCT_ID)
-                            .name(source.getName())
-                            .price(source.getPrice())
-                            .meatGrade(source.getMeatGrade())
+                            .name(product.name())
+                            .price(product.price())
+                            .meatGrade(product.meatGrade())
                             .build();
                 });
             }
@@ -73,15 +73,15 @@ class KoreanBeefUpdateServiceTest {
             @Test
             @DisplayName("매개변수로 전달한 값을 Id로 가지고 있는 User를 반환한다")
             void it_returns_product_having_id_equal_to_param() {
-                assertThat(withExisting().getId()).isEqualTo(PRODUCT_ID);
+                assertThat(withExisting().id()).isEqualTo(PRODUCT_ID);
             }
 
             @Test
             @DisplayName("매개변수로 전달한 값이 반영된 한우 상품을 반환한다")
             void it_returns_product_reflecting_params() {
-                assertThat(withExisting().getName()).isEqualTo(PRODUCT_NAME);
-                assertThat(withExisting().getPrice()).isEqualTo(PRICE);
-                assertThat(withExisting().getMeatGrade()).isEqualTo(MEAT_GRADE);
+                assertThat(withExisting().name()).isEqualTo(PRODUCT_NAME);
+                assertThat(withExisting().price()).isEqualTo(PRICE);
+                assertThat(withExisting().meatGrade()).isEqualTo(MEAT_GRADE);
             }
         }
     }

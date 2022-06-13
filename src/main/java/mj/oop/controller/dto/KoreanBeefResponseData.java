@@ -19,6 +19,6 @@ public class KoreanBeefResponseData extends ProductResponseData {
     }
 
     public static KoreanBeefResponseData from(KoreanBeef product) {
-        return new KoreanBeefResponseData(product.getId(), product.getName(), product.getPrice(), product.getMeatGrade());
+        return new KoreanBeefResponseData(product.id(), product.name(), product.price(), product.meatGrade());
     }
 }

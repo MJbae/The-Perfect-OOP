@@ -106,7 +106,7 @@ class KoreanBeefShowServiceTest {
             @Test
             @DisplayName("전달 받은 Id에 해당하는 상품을 반환한다")
             void it_returns_product_having_id_equal_to_param() {
-                assertThat(withExisting().getId()).isEqualTo(PRODUCT_ID);
+                assertThat(withExisting().id()).isEqualTo(PRODUCT_ID);
             }
         }
 
