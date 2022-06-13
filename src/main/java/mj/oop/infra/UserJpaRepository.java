@@ -11,7 +11,7 @@ import java.util.Optional;
  * '사용자' 저장소 인터페이스
  */
 @Repository
-public interface UserJpaRepository extends CrudRepository<User, Long> {
+public interface UserJpaRepository<T extends User> extends CrudRepository<T, Long> {
     /**
      * 모든 사용자를 반환한다
      * <p>
@@ -19,7 +19,7 @@ public interface UserJpaRepository extends CrudRepository<User, Long> {
      * @return 사용자를 내부 요소로 하는 List
      * </p>
      */
-    List<User> findAll();
+    List<T> findAll();
 
     /**
      * id에 해당하는 사용자를 반환한다
@@ -28,7 +28,7 @@ public interface UserJpaRepository extends CrudRepository<User, Long> {
      * @return Optional<User> 사용자
      * </p>
      */
-    Optional<User> findById(Long id);
+    Optional<T> findById(Long id);
 
     /**
      * 사용자를 저장하고, 저장된 사용자를 반환한다
@@ -37,7 +37,7 @@ public interface UserJpaRepository extends CrudRepository<User, Long> {
      * @return 사용자
      * </p>
      */
-    User save(User user);
+    T save(T user);
 
 
     /**
