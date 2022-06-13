@@ -2,6 +2,7 @@ package mj.oop.application;
 
 
 import mj.oop.application.interfaces.UserDeleteService;
+import mj.oop.infra.CustomerRepository;
 import mj.oop.infra.UserJpaRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -17,7 +18,7 @@ import static org.mockito.Mockito.mock;
 @DisplayName("CustomerDeleteService")
 class CustomerDeleteServiceTest {
     private UserDeleteService service;
-    private final UserJpaRepository repository = mock(UserJpaRepository.class);
+    private final CustomerRepository repository = mock(CustomerRepository.class);
     private final Long USER_ID = 1L;
     private final Long USER_ID_NOT_EXISTING = 10L;
 

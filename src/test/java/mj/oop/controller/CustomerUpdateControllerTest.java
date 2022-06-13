@@ -2,7 +2,9 @@ package mj.oop.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import mj.oop.application.CustomerUpdateService;
+import mj.oop.controller.dto.CustomerRequestData;
 import mj.oop.controller.dto.UserRequestData;
+import mj.oop.domain.entity.Customer;
 import mj.oop.domain.entity.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -39,8 +41,8 @@ class CustomerUpdateControllerTest {
     private final String USER_NAME = "Test User";
     private final String USER_EMAIL = "hello@gmail.com";
     private final String USER_PASSWORD = "yahOo~!@12345";
-    private User user;
-    private User userWithoutId;
+    private Customer user;
+    private Customer userWithoutId;
 
     @Nested
     @DisplayName("patch 메소드는")
@@ -50,18 +52,18 @@ class CustomerUpdateControllerTest {
         class Context_with_valid_param {
             @BeforeEach
             void setUp() {
-                user = User.builder()
+                user = Customer.builder()
                         .id(USER_ID)
                         .name(USER_NAME + "UPDATED")
                         .email(USER_EMAIL)
                         .password(USER_PASSWORD)
                         .build();
-                userWithoutId = User.builder()
+                userWithoutId = Customer.builder()
                         .name(USER_NAME + "UPDATED")
                         .email(USER_EMAIL)
                         .password(USER_PASSWORD)
                         .build();
-                given(service.update(eq(USER_ID), any(User.class))).willReturn(user);
+                given(service.update(eq(USER_ID), any(Customer.class))).willReturn(user);
             }
 
             @Test
@@ -79,12 +81,12 @@ class CustomerUpdateControllerTest {
         class Context_without_existing_user {
             @BeforeEach
             void setUp() {
-                userWithoutId = User.builder()
+                userWithoutId = Customer.builder()
                         .name(USER_NAME)
                         .email(USER_EMAIL)
                         .password(USER_PASSWORD)
                         .build();
-                given(service.update(eq(USER_ID_NOT_EXISTING), any(User.class)))
+                given(service.update(eq(USER_ID_NOT_EXISTING), any(Customer.class)))
                         .willThrow(new NoSuchElementException(USER_ID_NOT_EXISTING.toString()));
             }
 
@@ -103,18 +105,18 @@ class CustomerUpdateControllerTest {
         class Context_with_invalid_request_body {
             @BeforeEach
             void setUp() {
-                user = User.builder()
+                user = Customer.builder()
                         .id(USER_ID)
                         .name("")
                         .email(USER_EMAIL)
                         .password(USER_PASSWORD)
                         .build();
-                userWithoutId = User.builder()
+                userWithoutId = Customer.builder()
                         .name("")
                         .email(USER_EMAIL)
                         .password(USER_PASSWORD)
                         .build();
-                given(service.update(eq(USER_ID), any(User.class))).willReturn(user);
+                given(service.update(eq(USER_ID), any(Customer.class))).willReturn(user);
             }
 
             @Test
@@ -130,7 +132,7 @@ class CustomerUpdateControllerTest {
     }
 
     private String jsonFrom(User user) throws JsonProcessingException {
-        UserRequestData requestData = UserRequestData.builder()
+        CustomerRequestData requestData = CustomerRequestData.builder()
                 .name(user.getName())
                 .email(user.getEmail())
                 .password(user.getPassword())

@@ -3,7 +3,8 @@ package mj.oop.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import mj.oop.application.CustomerCreateService;
-import mj.oop.controller.dto.UserRequestData;
+import mj.oop.controller.dto.CustomerRequestData;
+import mj.oop.domain.entity.Customer;
 import mj.oop.domain.entity.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -37,8 +38,8 @@ class CustomerCreateControllerTest {
     private final String USER_EMAIL = "hello@gmail.com";
     private final String USER_PASSWORD = "yahOo~!@12345";
 
-    private User user;
-    private User userWithoutId;
+    private Customer user;
+    private Customer userWithoutId;
 
 
     @Nested
@@ -49,19 +50,19 @@ class CustomerCreateControllerTest {
         class Context_with_valid_param {
             @BeforeEach
             void setUp() {
-                user = User.builder()
+                user = Customer.builder()
                         .id(USER_ID)
                         .name(USER_NAME)
                         .email(USER_EMAIL)
                         .password(USER_PASSWORD)
                         .build();
 
-                userWithoutId = User.builder()
+                userWithoutId = Customer.builder()
                         .name(USER_NAME)
                         .email(USER_EMAIL)
                         .password(USER_PASSWORD)
                         .build();
-                given(service.create(any(User.class))).willReturn(user);
+                given(service.create(any(Customer.class))).willReturn(user);
             }
 
             @Test
@@ -80,13 +81,13 @@ class CustomerCreateControllerTest {
         class Context_with_invalid_request_body {
             @BeforeEach
             void setUp() {
-                user = User.builder()
+                user = Customer.builder()
                         .id(USER_ID)
                         .name("")
                         .email(USER_EMAIL)
                         .password(USER_PASSWORD)
                         .build();
-                given(service.create(any(User.class))).willReturn(user);
+                given(service.create(any(Customer.class))).willReturn(user);
             }
 
             @Test
@@ -105,13 +106,13 @@ class CustomerCreateControllerTest {
         class Context_with_invalid_password {
             @BeforeEach
             void setUp() {
-                user = User.builder()
+                user = Customer.builder()
                         .id(USER_ID)
                         .name(USER_NAME)
                         .email(USER_EMAIL)
                         .password("1234")
                         .build();
-                given(service.create(any(User.class))).willReturn(user);
+                given(service.create(any(Customer.class))).willReturn(user);
             }
 
             @Test
@@ -127,7 +128,7 @@ class CustomerCreateControllerTest {
     }
 
     private String jsonFrom(User user) throws JsonProcessingException {
-        UserRequestData requestData = UserRequestData.builder()
+        CustomerRequestData requestData = CustomerRequestData.builder()
                 .name(user.getName())
                 .email(user.getEmail())
                 .password(user.getPassword())
