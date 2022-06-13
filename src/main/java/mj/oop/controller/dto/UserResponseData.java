@@ -10,7 +10,6 @@ import mj.oop.domain.entity.User;
 @Getter
 @Builder
 @NoArgsConstructor
-@AllArgsConstructor
 public class UserResponseData {
     private Long id;
 
@@ -20,7 +19,12 @@ public class UserResponseData {
 
     private String password;
 
-
+    public UserResponseData(Long id, String name, String email, String password){
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
     public static UserResponseData from(User user) {
         return UserResponseData.builder()
                 .id(user.getId())
