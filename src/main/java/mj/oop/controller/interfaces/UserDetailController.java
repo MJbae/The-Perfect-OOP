@@ -1,5 +1,6 @@
 package mj.oop.controller.interfaces;
 
+import mj.oop.controller.dto.ProductResponseData;
 import mj.oop.controller.dto.UserResponseData;
 
 /**
@@ -9,7 +10,7 @@ import mj.oop.controller.dto.UserResponseData;
  * UserDetailController
  * </p>
  */
-public interface UserDetailController {
+public interface UserDetailController<T extends UserResponseData> {
     /**
      * 상세 조히 요청에 따른 처리 결과를 UserResponseData 형태로 가공하여 반환한다
      * <p>
@@ -18,5 +19,5 @@ public interface UserDetailController {
      * @return HTTP Request를 처리한 결과를 JSON 객체로 역직렬화하기 위한 객체
      * </p>
      */
-    UserResponseData detail(Long id);
+    T detail(Long id);
 }

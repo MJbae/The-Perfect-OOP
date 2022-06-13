@@ -9,7 +9,7 @@ import mj.oop.domain.entity.User;
  * ToyCrudService
  * </p>
  */
-public interface UserUpdateService {
+public interface UserUpdateService<T extends User> {
     /**
      * 매개변수로 전달 받은 id에 해당하는 User 엔티티를 반영하여 수정된 User 엔티티를 반환한다
      * <p>
@@ -17,5 +17,5 @@ public interface UserUpdateService {
      * @return 수정된 User 엔티티
      * </p>
      */
-    User update(Long id, User user);
+    T update(Long id, T user);
 }

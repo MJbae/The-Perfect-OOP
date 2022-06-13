@@ -1,5 +1,7 @@
 package mj.oop.controller.interfaces;
 
+import mj.oop.controller.dto.CustomerRequestData;
+import mj.oop.controller.dto.CustomerResponseData;
 import mj.oop.controller.dto.UserRequestData;
 import mj.oop.controller.dto.UserResponseData;
 
@@ -10,7 +12,7 @@ import mj.oop.controller.dto.UserResponseData;
  * UserUpdateController
  * </p>
  */
-public interface UserUpdateController {
+public interface UserUpdateController<T extends UserResponseData, T2 extends UserRequestData> {
     /**
      * 수정 요청에 따른 처리 결과를 UserResponseData 형태로 가공하여 반환한다
      * <p>
@@ -19,5 +21,5 @@ public interface UserUpdateController {
      * @return HTTP Request를 처리한 결과를 JSON 객체로 역직렬화하기 위한 객체
      * </p>
      */
-    UserResponseData update(Long id, UserRequestData requestData);
+    T update(Long id, T2 requestData);
 }

@@ -9,7 +9,7 @@ import mj.oop.domain.entity.User;
  * UserCrudService
  * </p>
  */
-public interface UserCreateService {
+public interface UserCreateService<T extends User> {
     /**
      * User 엔티티 객체 생성하고, 생성된 객체를 반환한다.
      * <p>
@@ -17,5 +17,5 @@ public interface UserCreateService {
      * @return User 객체
      * </p>
      */
-    User create(User user);
+    T create(T user);
 }

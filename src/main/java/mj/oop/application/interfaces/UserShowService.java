@@ -11,14 +11,14 @@ import java.util.List;
  * UserCrudService
  * </p>
  */
-public interface UserShowService {
+public interface UserShowService<T extends User> {
     /**
      * 모든 User 엔티티를 List 형태로 반환한다
      * <p>
      * @return User 엔티티를 내부 요소로 하는 List Collection
      * </p>
      */
-    List<User> showAll();
+    List<T> showAll();
 
     /**
      * 매개변수로 전달 받은 id에 해당하는 User 엔티티를 반환한다
@@ -27,5 +27,5 @@ public interface UserShowService {
      * @return User 엔티티
      * </p>
      */
-    User showById(Long id);
+    T showById(Long id);
 }
