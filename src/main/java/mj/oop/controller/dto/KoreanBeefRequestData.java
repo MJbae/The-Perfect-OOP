@@ -1,23 +1,23 @@
 package mj.oop.controller.dto;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import mj.oop.domain.entity.KoreanBeef;
 
 import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class KoreanBeefRequestData extends ProductRequestData {
     @NotBlank
-    private String meatGrade;
+    private final String meatGrade;
 
     @Builder
-    public KoreanBeefRequestData(String name, BigDecimal price, String meatGrade) {
+    @JsonCreator
+    public KoreanBeefRequestData(@JsonProperty("name") String name, @JsonProperty("price") BigDecimal price,
+                                 @JsonProperty("meatGrade") String meatGrade) {
         super(name, price);
         this.meatGrade = meatGrade;
     }
