@@ -8,7 +8,7 @@
 </table>
 
 ## 1. Output
-- [(IN PROGRESS) UML](https://github.com/MJbae/The-Perfect-OOP/wiki/Product-UML)
+- [UML](https://github.com/MJbae/The-Perfect-OOP/wiki/UML)
 - [(IN PROGRESS) API Docs]()
 - [(IN PROGRESS) Deployed Service]()
 
