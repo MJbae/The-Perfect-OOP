@@ -3,9 +3,11 @@ package mj.oop.application;
 import mj.oop.application.interfaces.ProductUpdateService;
 import mj.oop.domain.entity.KoreanBeef;
 import mj.oop.infra.KoreanBeefRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
 
+@Service
 public class KoreanBeefUpdateService implements ProductUpdateService<KoreanBeef> {
     private final KoreanBeefRepository repository;
 
