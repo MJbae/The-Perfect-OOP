@@ -2,24 +2,24 @@ package mj.oop.application;
 
 
 import mj.oop.application.interfaces.UserCreateService;
-import mj.oop.domain.entity.User;
-import mj.oop.infra.UserJpaRepository;
+import mj.oop.domain.entity.Customer;
+import mj.oop.infra.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CustomerCreateService implements UserCreateService {
-    private final UserJpaRepository repository;
+public class CustomerCreateService implements UserCreateService<Customer> {
+    private final CustomerRepository repository;
 
-    public CustomerCreateService(UserJpaRepository repository) {
+    public CustomerCreateService(CustomerRepository repository) {
         this.repository = repository;
     }
 
 
     @Override
-    public User create(User user) {
-        User userSaving = User.builder()
+    public Customer create(Customer user) {
+        Customer userSaving = Customer.builder()
                 .name(user.getName())
                 .email(user.getEmail())
                 .password(user.getPassword())

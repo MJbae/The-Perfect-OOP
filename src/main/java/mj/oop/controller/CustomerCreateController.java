@@ -1,35 +1,31 @@
 package mj.oop.controller;
 
-import mj.oop.application.interfaces.UserCreateService;
-import mj.oop.application.interfaces.UserShowService;
-import mj.oop.controller.dto.UserRequestData;
-import mj.oop.controller.dto.UserResponseData;
+import mj.oop.application.CustomerCreateService;
+import mj.oop.controller.dto.CustomerRequestData;
+import mj.oop.controller.dto.CustomerResponseData;
 import mj.oop.controller.interfaces.UserCreateController;
-import mj.oop.controller.interfaces.UserListController;
-import mj.oop.domain.entity.User;
+import mj.oop.domain.entity.Customer;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 @RestController
 @RequestMapping("/users")
-public class CustomerCreateController implements UserCreateController {
-    private final UserCreateService service;
+public class CustomerCreateController implements UserCreateController<CustomerResponseData, CustomerRequestData> {
+    private final CustomerCreateService service;
 
-    public CustomerCreateController(UserCreateService service) {
+    public CustomerCreateController(CustomerCreateService service) {
         this.service = service;
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Override
-    public UserResponseData create(@RequestBody @Valid UserRequestData requestData) {
-        User user = service.create(requestData.toEntity());
-        return UserResponseData.from(user);
+    public CustomerResponseData create(@RequestBody @Valid CustomerRequestData requestData) {
+        Customer user = service.create(requestData.toEntity());
+        return CustomerResponseData.from(user);
     }
 
 }

@@ -1,30 +1,28 @@
 package mj.oop.controller;
 
-import mj.oop.application.interfaces.UserShowService;
-import mj.oop.controller.dto.UserResponseData;
+import mj.oop.application.CustomerShowService;
+import mj.oop.controller.dto.CustomerResponseData;
 import mj.oop.controller.interfaces.UserListController;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
 
 @RestController
 @RequestMapping("/users")
-public class CustomerListController implements UserListController {
-    private final UserShowService service;
+public class CustomerListController implements UserListController<CustomerResponseData> {
+    private final CustomerShowService service;
 
-    public CustomerListController(UserShowService service) {
+    public CustomerListController(CustomerShowService service) {
         this.service = service;
     }
 
     @GetMapping
     @Override
-    public List<UserResponseData> list() {
+    public List<CustomerResponseData> list() {
         return service.showAll().stream()
-                .map(UserResponseData::from)
+                .map(CustomerResponseData::from)
                 .collect(Collectors.toList());
     }
 

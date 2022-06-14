@@ -2,7 +2,9 @@ package mj.oop.application;
 
 
 import mj.oop.application.interfaces.UserShowService;
+import mj.oop.domain.entity.Customer;
 import mj.oop.domain.entity.User;
+import mj.oop.infra.CustomerRepository;
 import mj.oop.infra.UserJpaRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -21,19 +23,19 @@ import static org.mockito.Mockito.mock;
 @DisplayName("CustomerShowService")
 class CustomerShowServiceTest {
     private UserShowService service;
-    private final UserJpaRepository repository = mock(UserJpaRepository.class);
+    private final CustomerRepository repository = mock(CustomerRepository.class);
     private final Long USER_ID = 1L;
     private final Long USER_ID_NOT_EXISTING = 10L;
     private final String USER_NAME = "Test User";
     private final String USER_EMAIL = "hello@gmail.com";
     private final String USER_PASSWORD = "yahOo~!@12345";
-    private User user;
+    private Customer user;
 
 
     @BeforeEach
     void setUp() {
         service = new CustomerShowService(repository);
-        user = User.builder()
+        user = Customer.builder()
                 .id(USER_ID)
                 .name(USER_NAME)
                 .email(USER_EMAIL)

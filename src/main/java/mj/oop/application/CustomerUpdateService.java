@@ -2,28 +2,27 @@ package mj.oop.application;
 
 
 import mj.oop.application.interfaces.UserUpdateService;
-import mj.oop.domain.entity.User;
-import mj.oop.infra.UserJpaRepository;
+import mj.oop.domain.entity.Customer;
+import mj.oop.infra.CustomerRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
-public class CustomerUpdateService implements UserUpdateService {
-    private final UserJpaRepository repository;
+public class CustomerUpdateService implements UserUpdateService<Customer> {
+    private final CustomerRepository repository;
 
-    public CustomerUpdateService(UserJpaRepository repository) {
+    public CustomerUpdateService(CustomerRepository repository) {
         this.repository = repository;
     }
 
     @Override
-    public User update(Long id, User user) {
+    public Customer update(Long id, Customer user) {
         if (!repository.existsById(id)) {
             throw new NoSuchElementException(id.toString());
         }
 
-        User userUpdating = User.builder()
+        Customer userUpdating = Customer.builder()
                 .id(id)
                 .name(user.getName())
                 .email(user.getEmail())

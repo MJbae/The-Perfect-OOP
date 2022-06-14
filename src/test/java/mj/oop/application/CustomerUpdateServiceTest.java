@@ -2,7 +2,9 @@ package mj.oop.application;
 
 
 import mj.oop.application.interfaces.UserUpdateService;
+import mj.oop.domain.entity.Customer;
 import mj.oop.domain.entity.User;
+import mj.oop.infra.CustomerRepository;
 import mj.oop.infra.UserJpaRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -20,7 +22,7 @@ import static org.mockito.Mockito.mock;
 @DisplayName("CustomerUpdateService")
 class CustomerUpdateServiceTest {
     private UserUpdateService service;
-    private final UserJpaRepository repository = mock(UserJpaRepository.class);
+    private final CustomerRepository repository = mock(CustomerRepository.class);
     private final Long USER_ID = 1L;
     private final Long USER_ID_NOT_EXISTING = 10L;
     private final String USER_NAME = "Test User";
@@ -34,13 +36,13 @@ class CustomerUpdateServiceTest {
     void setUp() {
         service = new CustomerUpdateService(repository);
 
-        user = User.builder()
+        user = Customer.builder()
                 .id(USER_ID)
                 .name(USER_NAME)
                 .email(USER_EMAIL)
                 .password(USER_PASSWORD)
                 .build();
-        userWithoutId = User.builder()
+        userWithoutId = Customer.builder()
                 .name(USER_NAME)
                 .email(USER_EMAIL)
                 .password(USER_PASSWORD)
@@ -68,9 +70,9 @@ class CustomerUpdateServiceTest {
             @BeforeEach
             void setUp() {
                 given(repository.existsById(USER_ID)).willReturn(Boolean.TRUE);
-                given(repository.save(any(User.class))).will(invocation -> {
+                given(repository.save(any(Customer.class))).will(invocation -> {
                     User source = invocation.getArgument(0);
-                    return User.builder()
+                    return Customer.builder()
                             .id(USER_ID)
                             .name(source.getName())
                             .email(source.getEmail())

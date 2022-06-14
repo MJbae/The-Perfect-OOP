@@ -1,32 +1,29 @@
 package mj.oop.controller;
 
-import mj.oop.application.interfaces.UserUpdateService;
-import mj.oop.controller.dto.UserRequestData;
-import mj.oop.controller.dto.UserResponseData;
+import mj.oop.application.CustomerUpdateService;
+import mj.oop.controller.dto.CustomerRequestData;
+import mj.oop.controller.dto.CustomerResponseData;
 import mj.oop.controller.interfaces.UserUpdateController;
-import mj.oop.domain.entity.User;
-import org.springframework.http.HttpStatus;
+import mj.oop.domain.entity.Customer;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 @RestController
 @RequestMapping("/users")
-public class CustomerUpdateController implements UserUpdateController {
-    private final UserUpdateService service;
+public class CustomerUpdateController implements UserUpdateController<CustomerResponseData, CustomerRequestData> {
+    private final CustomerUpdateService service;
 
-    public CustomerUpdateController(UserUpdateService service) {
+    public CustomerUpdateController(CustomerUpdateService service) {
         this.service = service;
     }
 
     @PatchMapping("{id}")
     @Override
-    public UserResponseData update(@PathVariable Long id, @RequestBody @Valid UserRequestData requestData) {
-        User user = service.update(id, requestData.toEntity());
-        return UserResponseData.from(user);
+    public CustomerResponseData update(@PathVariable Long id, @RequestBody @Valid CustomerRequestData requestData) {
+        Customer user = service.update(id, requestData.toEntity());
+        return CustomerResponseData.from(user);
     }
 
 }

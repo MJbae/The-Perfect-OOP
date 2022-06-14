@@ -1,10 +1,12 @@
 package mj.oop.controller.interfaces;
 
+import mj.oop.controller.CustomerDeleteController;
+
 /**
  * User에 대한 HTTP DELETE 요청을 수신하고 처리 결과를 송신한다
  * <p>
  * All Known Implementing Classes:
- * UserDeleteController
+ * @see CustomerDeleteController
  * </p>
  */
 public interface UserDeleteController {

@@ -1,5 +1,6 @@
 package mj.oop.application.interfaces;
 
+import mj.oop.application.KoreanBeefShowService;
 import mj.oop.domain.entity.Product;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
  * Product 타입을 상속하는 객체의 조회에 대한 비지니스 로직을 처리한다
  * <p>
  * All Known Implementing Classes:
+ * @see KoreanBeefShowService
  * </p>
  */
 public interface ProductShowService<T extends Product> {

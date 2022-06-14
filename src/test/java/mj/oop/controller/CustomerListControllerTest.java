@@ -3,6 +3,7 @@ package mj.oop.controller;
 import mj.oop.application.CustomerShowService;
 import mj.oop.application.interfaces.UserShowService;
 import mj.oop.controller.interfaces.UserListController;
+import mj.oop.domain.entity.Customer;
 import mj.oop.domain.entity.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -35,18 +36,20 @@ class CustomerListControllerTest {
     private final String USER_NAME = "Test User";
     private final String USER_EMAIL = "hello@gmail.com";
     private final String USER_PASSWORD = "yahOo~!@12345";
-    private User user;
+    private final String CUSTOMER_GRADE = "A+";
+    private Customer user;
 
     @Nested
     @DisplayName("list 메소드는")
     class Describe_list {
         @BeforeEach
         void setUp() {
-            user = User.builder()
+            user = Customer.builder()
                     .id(USER_ID)
                     .name(USER_NAME)
                     .email(USER_EMAIL)
                     .password(USER_PASSWORD)
+                    .customerGrade(CUSTOMER_GRADE)
                     .build();
             given(service.showAll()).willReturn(List.of(user));
         }

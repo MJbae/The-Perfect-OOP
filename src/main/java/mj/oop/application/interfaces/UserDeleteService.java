@@ -1,14 +1,17 @@
 package mj.oop.application.interfaces;
 
 
+import mj.oop.application.CustomerDeleteService;
+import mj.oop.domain.entity.User;
+
 /**
  * User 삭제에 대한 비지니스 로직을 처리한다
  * <p>
  * All Known Implementing Classes:
- * UserCrudService
+ * @see CustomerDeleteService
  * </p>
  */
-public interface UserDeleteService {
+public interface UserDeleteService<T extends User> {
     /**
      * 매개변수로 전달 받은 id에 해당하는 User를 삭제한다
      * <p>
