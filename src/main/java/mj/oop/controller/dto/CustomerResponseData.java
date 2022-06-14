@@ -8,7 +8,7 @@ import mj.oop.domain.entity.Customer;
 
 @Getter
 public class CustomerResponseData extends UserResponseData {
-    private String customerGrade;
+    private final String customerGrade;
 
     @JsonCreator
     public CustomerResponseData(@JsonProperty("id") Long id, @JsonProperty("name") String name,
