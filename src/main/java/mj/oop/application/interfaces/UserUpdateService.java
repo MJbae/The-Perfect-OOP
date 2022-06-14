@@ -1,12 +1,13 @@
 package mj.oop.application.interfaces;
 
+import mj.oop.application.CustomerUpdateService;
 import mj.oop.domain.entity.User;
 
 /**
  * 사용자 정보 수정 관련 비지니스 로직을 처리한다
  * <p>
  * All Known Implementing Classes:
- * ToyCrudService
+ * @see CustomerUpdateService
  * </p>
  */
 public interface UserUpdateService<T extends User> {

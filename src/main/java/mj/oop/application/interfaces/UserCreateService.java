@@ -1,12 +1,13 @@
 package mj.oop.application.interfaces;
 
+import mj.oop.application.CustomerCreateService;
 import mj.oop.domain.entity.User;
 
 /**
  * 사용자 생성에 대한 비지니스 로직을 처리한다
  * <p>
  * All Known Implementing Classes:
- * UserCrudService
+ * @see CustomerCreateService
  * </p>
  */
 public interface UserCreateService<T extends User> {
