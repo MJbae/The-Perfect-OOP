@@ -1,13 +1,13 @@
 package mj.oop.controller.interfaces;
 
-import mj.oop.controller.dto.ProductResponseData;
+import mj.oop.controller.CustomerDetailController;
 import mj.oop.controller.dto.UserResponseData;
 
 /**
  * User에 대해 HTTP GET의 상세 조회 요청을 받고, 처리결과를 응답으로 반환한다
  * <p>
  * All Known Implementing Classes:
- * UserDetailController
+ * @see CustomerDetailController
  * </p>
  */
 public interface UserDetailController<T extends UserResponseData> {

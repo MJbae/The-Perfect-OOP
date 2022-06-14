@@ -1,5 +1,6 @@
 package mj.oop.controller.interfaces;
 
+import mj.oop.controller.CustomerListController;
 import mj.oop.controller.dto.UserResponseData;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
  * User 객체에 대한 목록 조회 요청을 받아서 처리결과를 반환한다
  * <p>
  * All Known Implementing Classes:
- * UserListController
+ * @see CustomerListController
  * </p>
  */
 public interface UserListController<T extends UserResponseData> {

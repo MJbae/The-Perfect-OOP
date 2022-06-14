@@ -1,13 +1,14 @@
 package mj.oop.controller.interfaces;
 
 
+import mj.oop.controller.CustomerCreateController;
 import mj.oop.controller.dto.*;
 
 /**
  * User에 연관된 HTTP POST 요청을 받고, 처리결과를 응답으로 반환한다
  * <p>
  * All Known Implementing Classes:
- * UserCrudController
+ * @see CustomerCreateController
  * </p>
  */
 public interface UserCreateController<T extends UserResponseData, T2 extends UserRequestData> {

@@ -1,7 +1,6 @@
 package mj.oop.controller.interfaces;
 
-import mj.oop.controller.dto.CustomerRequestData;
-import mj.oop.controller.dto.CustomerResponseData;
+import mj.oop.controller.CustomerUpdateController;
 import mj.oop.controller.dto.UserRequestData;
 import mj.oop.controller.dto.UserResponseData;
 
@@ -9,7 +8,7 @@ import mj.oop.controller.dto.UserResponseData;
  * User에 대해 HTTP PATCH의 수정 요청을 받고, 처리결과를 응답으로 반환한다
  * <p>
  * All Known Implementing Classes:
- * UserUpdateController
+ * @see CustomerUpdateController
  * </p>
  */
 public interface UserUpdateController<T extends UserResponseData, T2 extends UserRequestData> {
