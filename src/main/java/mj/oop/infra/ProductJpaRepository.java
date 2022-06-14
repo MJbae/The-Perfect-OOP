@@ -15,7 +15,7 @@ public interface ProductJpaRepository<T extends Product> extends CrudRepository<
 
     T save(T product);
 
-    void delete(T product);
+    void deleteById(Long id);
 
     boolean existsById(Long id);
 }

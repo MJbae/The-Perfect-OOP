@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
 public interface KoreanBeefRepository extends ProductJpaRepository<KoreanBeef> {
     List<KoreanBeef> findAll();
 
@@ -14,7 +13,7 @@ public interface KoreanBeefRepository extends ProductJpaRepository<KoreanBeef> {
 
     KoreanBeef save(KoreanBeef product);
 
-    void delete(KoreanBeef product);
+    void deleteById(Long id);
 
     boolean existsById(Long id);
 }
