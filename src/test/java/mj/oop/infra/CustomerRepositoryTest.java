@@ -25,6 +25,7 @@ class CustomerRepositoryTest {
     private final String USER_NAME = "Test User";
     private final String USER_EMAIL = "hello@gmail.com";
     private final String USER_PASSWORD = "yahOo~!@12345";
+    private final String CUSTOMER_GRADE = "A+";
 
     private Customer user;
 
@@ -37,6 +38,7 @@ class CustomerRepositoryTest {
                 .name(USER_NAME)
                 .email(USER_EMAIL)
                 .password(USER_PASSWORD)
+                .customerGrade(CUSTOMER_GRADE)
                 .build();
     }
 

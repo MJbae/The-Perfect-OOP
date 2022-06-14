@@ -41,6 +41,7 @@ class CustomerUpdateControllerTest {
     private final String USER_NAME = "Test User";
     private final String USER_EMAIL = "hello@gmail.com";
     private final String USER_PASSWORD = "yahOo~!@12345";
+    private final String CUSTOMER_GRADE = "A+";
     private Customer user;
     private Customer userWithoutId;
 
@@ -57,11 +58,13 @@ class CustomerUpdateControllerTest {
                         .name(USER_NAME + "UPDATED")
                         .email(USER_EMAIL)
                         .password(USER_PASSWORD)
+                        .customerGrade(CUSTOMER_GRADE)
                         .build();
                 userWithoutId = Customer.builder()
                         .name(USER_NAME + "UPDATED")
                         .email(USER_EMAIL)
                         .password(USER_PASSWORD)
+                        .customerGrade(CUSTOMER_GRADE)
                         .build();
                 given(service.update(eq(USER_ID), any(Customer.class))).willReturn(user);
             }
@@ -85,6 +88,7 @@ class CustomerUpdateControllerTest {
                         .name(USER_NAME)
                         .email(USER_EMAIL)
                         .password(USER_PASSWORD)
+                        .customerGrade(CUSTOMER_GRADE)
                         .build();
                 given(service.update(eq(USER_ID_NOT_EXISTING), any(Customer.class)))
                         .willThrow(new NoSuchElementException(USER_ID_NOT_EXISTING.toString()));
@@ -110,11 +114,13 @@ class CustomerUpdateControllerTest {
                         .name("")
                         .email(USER_EMAIL)
                         .password(USER_PASSWORD)
+                        .customerGrade(CUSTOMER_GRADE)
                         .build();
                 userWithoutId = Customer.builder()
                         .name("")
                         .email(USER_EMAIL)
                         .password(USER_PASSWORD)
+                        .customerGrade(CUSTOMER_GRADE)
                         .build();
                 given(service.update(eq(USER_ID), any(Customer.class))).willReturn(user);
             }
@@ -131,11 +137,12 @@ class CustomerUpdateControllerTest {
         }
     }
 
-    private String jsonFrom(User user) throws JsonProcessingException {
+    private String jsonFrom(Customer user) throws JsonProcessingException {
         CustomerRequestData requestData = CustomerRequestData.builder()
                 .name(user.getName())
                 .email(user.getEmail())
                 .password(user.getPassword())
+                .customerGrade(user.getCustomerGrade())
                 .build();
 
         return objectMapper.writeValueAsString(requestData);

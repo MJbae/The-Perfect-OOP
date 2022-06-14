@@ -37,6 +37,7 @@ class CustomerCreateControllerTest {
     private final String USER_NAME = "Test User";
     private final String USER_EMAIL = "hello@gmail.com";
     private final String USER_PASSWORD = "yahOo~!@12345";
+    private final String CUSTOMER_GRADE = "A+";
 
     private Customer user;
     private Customer userWithoutId;
@@ -55,12 +56,14 @@ class CustomerCreateControllerTest {
                         .name(USER_NAME)
                         .email(USER_EMAIL)
                         .password(USER_PASSWORD)
+                        .customerGrade(CUSTOMER_GRADE)
                         .build();
 
                 userWithoutId = Customer.builder()
                         .name(USER_NAME)
                         .email(USER_EMAIL)
                         .password(USER_PASSWORD)
+                        .customerGrade(CUSTOMER_GRADE)
                         .build();
                 given(service.create(any(Customer.class))).willReturn(user);
             }
@@ -86,6 +89,7 @@ class CustomerCreateControllerTest {
                         .name("")
                         .email(USER_EMAIL)
                         .password(USER_PASSWORD)
+                        .customerGrade(CUSTOMER_GRADE)
                         .build();
                 given(service.create(any(Customer.class))).willReturn(user);
             }
@@ -111,6 +115,7 @@ class CustomerCreateControllerTest {
                         .name(USER_NAME)
                         .email(USER_EMAIL)
                         .password("1234")
+                        .customerGrade(CUSTOMER_GRADE)
                         .build();
                 given(service.create(any(Customer.class))).willReturn(user);
             }
@@ -127,11 +132,12 @@ class CustomerCreateControllerTest {
         }
     }
 
-    private String jsonFrom(User user) throws JsonProcessingException {
+    private String jsonFrom(Customer user) throws JsonProcessingException {
         CustomerRequestData requestData = CustomerRequestData.builder()
                 .name(user.getName())
                 .email(user.getEmail())
                 .password(user.getPassword())
+                .customerGrade(user.getCustomerGrade())
                 .build();
 
         return objectMapper.writeValueAsString(requestData);
