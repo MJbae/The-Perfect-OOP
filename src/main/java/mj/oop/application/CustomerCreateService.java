@@ -6,9 +6,10 @@ import mj.oop.domain.entity.Customer;
 import mj.oop.infra.CustomerRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import javax.transaction.Transactional;
 
 @Service
+@Transactional
 public class CustomerCreateService implements UserCreateService<Customer> {
     private final CustomerRepository repository;
 

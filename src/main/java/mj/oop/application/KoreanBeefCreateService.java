@@ -5,7 +5,10 @@ import mj.oop.domain.entity.KoreanBeef;
 import mj.oop.infra.KoreanBeefRepository;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
+@Transactional
 public class KoreanBeefCreateService implements ProductCreateService<KoreanBeef> {
     private final KoreanBeefRepository repository;
 

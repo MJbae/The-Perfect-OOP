@@ -5,9 +5,11 @@ import mj.oop.domain.entity.KoreanBeef;
 import mj.oop.infra.KoreanBeefRepository;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.NoSuchElementException;
 
 @Service
+@Transactional
 public class KoreanBeefUpdateService implements ProductUpdateService<KoreanBeef> {
     private final KoreanBeefRepository repository;
 

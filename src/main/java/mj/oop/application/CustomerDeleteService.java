@@ -6,9 +6,11 @@ import mj.oop.domain.entity.Customer;
 import mj.oop.infra.CustomerRepository;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.NoSuchElementException;
 
 @Service
+@Transactional
 public class CustomerDeleteService implements UserDeleteService<Customer> {
     private final CustomerRepository repository;
 

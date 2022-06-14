@@ -4,10 +4,12 @@ import mj.oop.application.interfaces.ProductDeleteService;
 import mj.oop.infra.KoreanBeefRepository;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.NoSuchElementException;
 
 
 @Service
+@Transactional
 public class KoreanBeefDeleteService implements ProductDeleteService {
     private final KoreanBeefRepository repository;
 
