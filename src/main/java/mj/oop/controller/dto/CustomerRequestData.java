@@ -4,13 +4,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Getter;
-import mj.oop.controller.validator.Password;
 import mj.oop.domain.entity.Customer;
+
+import javax.validation.constraints.NotBlank;
 
 
 @Getter
 public class CustomerRequestData extends UserRequestData {
-    @Password
+    @NotBlank
     private final String customerGrade;
 
     @Builder
