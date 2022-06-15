@@ -1,6 +1,7 @@
 package mj.oop.controller;
 
 import mj.oop.application.CustomerCreateService;
+import mj.oop.application.interfaces.UserCreateService;
 import mj.oop.controller.dto.CustomerRequestData;
 import mj.oop.controller.dto.CustomerResponseData;
 import mj.oop.controller.interfaces.UserCreateController;
@@ -14,7 +15,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/users")
 public class CustomerCreateController implements UserCreateController<CustomerResponseData, CustomerRequestData> {
-    private final CustomerCreateService service;
+    private final UserCreateService<Customer> service;
 
     public CustomerCreateController(CustomerCreateService service) {
         this.service = service;
