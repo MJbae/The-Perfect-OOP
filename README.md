@@ -1,7 +1,8 @@
 # The Perfect OOP
 
 ## 1. Output
-- [UML](https://github.com/MJbae/The-Perfect-OOP/wiki/UML)
+- [UML 설계](https://github.com/MJbae/The-Perfect-OOP/wiki/UML)
+- [SOLID 원칙 만족 여부](https://github.com/MJbae/The-Perfect-OOP/wiki/SOLID-%EC%9B%90%EC%B9%99%EC%97%90-%EB%94%B0%EB%A5%B8-%EA%B5%AC%ED%98%84)
 
 ## 2. Background
 - "Elegant Objects"를 읽고, 객체지향 패러다임에 빠졌다. 
